@@ -1,0 +1,76 @@
+/**
+ * User Configuration.
+ */
+/** Map relative paths to URLs. */
+var map = {};
+/** User packages configuration. */
+var packages = {};
+////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * Everything underneath this line is managed by the CLI.
+ */
+var barrels = [
+    // Angular specific barrels.
+    '@angular/core',
+    '@angular/common',
+    '@angular/compiler',
+    '@angular/forms',
+    '@angular/http',
+    '@angular/router',
+    '@angular/platform-browser',
+    '@angular/platform-browser-dynamic',
+    // Thirdparty barrels.
+    'rxjs',
+    '@covalent/core',
+    '@covalent/file-upload',
+    '@covalent/highlight',
+    '@covalent/markdown',
+    // App specific barrels.
+    'app',
+    'services',
+];
+var cliSystemConfigPackages = {};
+barrels.forEach(function (barrelName) {
+    cliSystemConfigPackages[barrelName] = { main: 'index' };
+});
+// Angular Material 2 Packages
+var materialPackages = [
+    'button',
+    'card',
+    'checkbox',
+    'core',
+    'icon',
+    'input',
+    'list',
+    'progress-bar',
+    'progress-circle',
+    'radio',
+    'sidenav',
+    'tabs',
+    'toolbar',
+    'grid-list',
+    'slide-toggle',
+    'menu',
+];
+materialPackages.forEach(function (pkg) {
+    var name = '@angular2-material/' + pkg;
+    packages[name] = {
+        defaultExtension: 'js',
+        format: 'cjs',
+        main: pkg + '.js',
+    };
+});
+// Apply the CLI SystemJS configuration.
+System.config({
+    map: {
+        '@angular': 'vendor/@angular',
+        'rxjs': 'vendor/rxjs',
+        '@angular2-material': 'vendor/@angular2-material',
+        '@covalent': 'vendor/@covalent',
+        'main': 'main.js',
+    },
+    packages: cliSystemConfigPackages,
+});
+// Apply the user's configuration.
+System.config({ map: map, packages: packages, materialPackages: materialPackages });
+//# sourceMappingURL=C:\Users\EM255017\GitHub\covalent-quickstart\tmp\broccoli_type_script_compiler-input_base_path-HRZQq778.tmp\0\system-config.js.map
